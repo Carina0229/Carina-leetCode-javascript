@@ -1,0 +1,15 @@
+var RecentCounter = function() {
+  this.queue = [];
+};
+
+/** 
+* @param {number} t
+* @return {number}
+*/
+RecentCounter.prototype.ping = function(t) {
+  this.queue.push(t);
+  while (t - this.queue[0] > 3000) {
+          this.queue.shift();
+  }
+  return this.queue.length;
+};
